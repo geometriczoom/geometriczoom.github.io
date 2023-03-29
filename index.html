@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>Learned Two-Plane Perspective Prior based Image Resampling for Efficient Object Detection</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!--     <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
+  <!-- <link rel="icon" type="image/png" href="img/seal_icon.png"> -->
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <link rel="stylesheet" href="web_utils/css/app.css">
+
+    <link rel="stylesheet" href="web_utils/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <script src="web_utils/js/app.js"></script>
+
+</head>
+
+<body>
+    <div class="container" id="main">
+        <div class="row">
+            <h2 class="col-md-12 text-center">
+                <b>Learned Two-Plane Perspective Prior based Image Resampling for Efficient Object Detection</br></b>
+            </h2>
+        </div>
+        <div class="row">
+            <table style="width:100%;max-width:1000px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+                <tr style="padding:0px">
+                  <td style="padding:0px">
+                    <table style="width:85%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+                      <tr style="padding:0px">
+                        <td style="padding:0%;width:63%;vertical-align:middle">
+                          <p style="text-align-last:justify">
+                          <a href="https://anuragxel.github.io" style="font-size: 1.8em; text-decoration: none;">Anurag Ghosh</a>&nbsp&nbsp&nbsp&nbsp&nbsp
+                          <a href="https://dineshreddy91.github.io" style="font-size: 1.8em; text-decoration: none;">N. Dinesh Reddy</a>&nbsp&nbsp&nbsp&nbsp
+                          <a href="https://scholar.google.com/citations?user=KrgivkIAAAAJ&hl=en" style="font-size: 1.8em; text-decoration: none;">Christoph Mertz</a>&nbsp&nbsp&nbsp&nbsp
+                          <a href="http://www.cs.cmu.edu/~srinivas/" style="font-size: 1.8em; text-decoration: none;">Srinivasa Narasimhan</a>&nbsp&nbsp&nbsp&nbsp
+                        </p>
+                        <p style="text-align:center"><a href="https://ri.cmu.edu"  style="font-size: 1.5em; text-decoration: none;">Carnegie Mellon University</a></p>
+                        </td>
+                      </tr>
+            </tbody></table>
+        </div>
+
+        <div class="row">
+            <p style="text-align: center">
+                <a href="https://arxiv.org/abs/2303.14311" style="font-size: 1.3em; text-decoration: none;">[Paper]</a>
+                <a href="https://github.com/anuragxel" style="font-size: 1.3em; text-decoration: none;">[Code (Coming Soon)]</a>
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <h3>
+                    Abstract
+                </h3>
+                <p class="text-justify">
+                    Real-time efficient perception is critical for autonomous navigation and city scale sensing. Orthogonal to architectural improvements, streaming perception approaches have exploited adaptive sampling improving real-time detection performance. In this work, we propose a learnable geometry-guided prior that incorporates rough geometry of the 3D scene (a ground plane and a plane above) to resample the images for efficient object detection. This significantly improves small and far-away object detection performance while also being dramatically more efficient both in terms of latency and memory. For autonomous navigation, using the same detector and scale, our approach improves detection rate by <span style="color: green;">+4.1 AP<sub>S</sub></span> or <span style="font-weight:bold">+39%</span> and in real-time performance by <span style="color: green;">+5.3 AP<sub>S</sub></span> or <span style="font-weight:bold">+63%</span> for small objects over state-of-the-art (SOTA). For fixed traffic cameras, our approach detects small objects at image scales other methods cannot. At the same scale, our approach improves detection of small objects by <span style="font-weight:bold">+195%</span> or <span style="color: green;">+12.5 AP<sub>S</sub></span> over naive-downsampling and <span style="font-weight:bold">+63%</span> or <span style="color: green;">+4.2 AP<sub>S</sub></span> over SOTA.
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <h3>
+                    Geometry for Image Resampling
+                </h3>
+                <p class="text-justify">
+                  Our intuition suggests resampling far-away image regions more would help us detect objects better.  We define an inductive prior based on scene geometry. 
+                </p>                
+                <br>
+                <video id="v1" width="100%" autoplay loop muted controls>
+                  <source src="videos/zooming-in.mp4" type="video/mp4" />
+                </video>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <h3>
+                    Describing Rough Geometry of Scenes
+                </h3>
+                <p class="text-justify">
+                <center>Object sizes in the image are determined by the 3D geometry of the world. We model two-planar regions in the image defined by 4 points each in the image in terms of vanishing point \(v \) and global learnable parameters \( \theta \) and \( \alpha \).</center> 
+                </p>                
+                <br>
+                <img width="100%" src="images/PlaneParameterization.jpg">
+                </img>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <h3>
+                    Transforming Plane Parameters to Saliency
+                </h3>
+                <p class="text-justify">
+                    <center>We leverage this rough 3D scene geometry to derive a <span style="font-weight:bold">differentiable saliency function</span> controlled by the vanishing point \( v \).</center>
+                </p>                
+                <br>
+                <video id="v0" width="100%" autoplay loop muted controls>
+                  <source src="videos/transform.mp4" type="video/mp4" />
+                </video>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <h3>
+                    Geometrically-inspired Saliency Warp \( \rightarrow \) Learnable Neural Layer
+                </h3>
+                <br>
+                <center>
+                <img width="70%" src="images/NeuralLayer.jpg">
+                </img>
+                </center>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <h3>
+                    Detection with a Geometrically-Constrained Warp
+                </h3>
+                <p class="text-justify">
+                    Our two-plane saliency focuses on objects that are geometrically constrained to be within the considered planes. The ground plane models objects that lie on the plane and reasonably models objects far away. Nearby tall objects, and objects far above the ground plane are modelled using an additional plane.
+                </p>                
+                <br>
+                <video id="v1" width="100%" autoplay loop muted controls>
+                    <source src="videos/viz3_cuboid.mp4" type="video/mp4" />
+                </video>
+                <p class="text-justify">
+                   
+                </p> 
+            </div>          
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <h3>
+                    Dependence of Warp on the Vanishing Point
+                </h3>
+
+                <p class="text-justify text-center">
+                    <center>
+                        <span style="font-weight:bold; font-size: 1.5em">Observe that the warp moves with the vanishing point and "zooms" into far-away objects.</span>
+                    </center>
+                </p>                
+                <br>
+                <video id="v1" width="100%" autoplay loop muted controls>
+                    <source src="videos/viz2_cuboid.mp4" type="video/mp4" />
+                </video>
+                <p class="text-justify">
+                </p> 
+            </div>          
+        </div>
+
+    </div>
+</body>
+</html>
