@@ -85,7 +85,7 @@
                     Geometry for Image Resampling
                 </h3>
                 <p class="text-justify">
-                  Our intuition suggests resampling far-away image regions more would help us detect objects better.  We define an inductive prior based on scene geometry. 
+                  Geometric cues are implicitly present in natural scenes, and notions of near and far are present in images. Sampling far-away image regions more would help us detect small far-away objects better.  We define an inductive prior based on this scene geometry. 
                 </p>                
                 <br>
                 <video id="v1" width="100%" autoplay loop muted controls>
@@ -101,7 +101,7 @@
                     Describing Rough Geometry of Scenes
                 </h3>
                 <p class="text-justify">
-                <center>Object sizes in the image are determined by the 3D geometry of the world. We model two-planar regions in the image defined by 4 points each in the image in terms of vanishing point \(v \) and global learnable parameters \( \theta \) and \( \alpha \).</center> 
+                <center>Object sizes in the image are determined by the 3D geometry of the world. We model two-planar regions defined by 4 points each in the image in terms of vanishing point \(v \) and global learnable parameters \( \theta \) and \( \alpha \).</center> 
                 </p>                
                 <br>
                 <img width="100%" src="images/PlaneParameterization.jpg">
@@ -144,7 +144,7 @@
                     Detection with a Geometrically-Constrained Warp
                 </h3>
                 <p class="text-justify">
-                    Our two-plane saliency focuses on objects that are geometrically constrained to be within the considered planes. The ground plane models objects that lie on the plane and reasonably models objects far away. Nearby tall objects, and objects far above the ground plane are modelled using an additional plane.
+                    Our method focuses on objects that are geometrically constrained to be within the considered planes. The ground plane models objects that lie on the plane and reasonably models objects far away. Nearby tall objects, and objects far above the ground plane are modelled using an additional plane.
                 </p>                
                 <br>
                 <video id="v1" width="100%" autoplay loop muted controls>
